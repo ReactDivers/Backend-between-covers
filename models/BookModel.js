@@ -5,13 +5,17 @@ const bookSchema=new mongoose.Schema({
     author:{type:String},
 });
 
-const bookModel=mongoose.model('bookShop',bookSchema);
-const seedBookCollection=()=>{
+// const bookModel=mongoose.model('bookShop',bookSchema);
+// const seedBookCollection=()=>{
     
-}
+// }
 class Book {
     constructor(data) {
-        this.image = data.volumeInfo["imageLinks"];
+        try{this.image = data.volumeInfo.imageLinks.thumbnail}
+        catch{this.image = 'https://www.forewordreviews.com/books/covers/networking-for-people-who-hate-networking.jpg'}
+
+      
+        
         this.description = data.volumeInfo.description;
         this.title = data.volumeInfo.title;
         this.author=data.volumeInfo.authors;
