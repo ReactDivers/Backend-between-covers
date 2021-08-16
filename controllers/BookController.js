@@ -1,4 +1,4 @@
-const Book = require('../models/BookModel');
+const {Book} = require('../models/BookModel');
 const Quote = require('../models/QuoteModel');
 const Book2 = require('../models/Book2Model');
 
@@ -23,6 +23,7 @@ const getBook = async (req, res) => {
         }
    
 }
+
 
 const fiction = async (req, res) => {
     try{
