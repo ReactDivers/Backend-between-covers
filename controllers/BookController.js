@@ -10,10 +10,12 @@ const axios = require('axios');
 
 const getBook = async (req, res) => {
     try{ const searchQuery = req.query.q;
-        console.log(searchQuery);
+        console.log(`search query = ${req.query.q}`);
+        
         const url = `${BOOK_SEARCH_URL}q=${searchQuery}`;
         const bookResponse = await axios.get(url);
         const bookData = bookResponse.data.items.map(item => new Book(item));
+        console.log(bookData);
         // console.log(bookData);
         res.json(bookData);}
         catch(error){
