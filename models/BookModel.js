@@ -4,8 +4,7 @@ const bookSchema=new mongoose.Schema({
     image:{type:String},
     description:{type:String},
     title:{type:String},
-    author:{type:String},
-    id:{type:String}
+    author:{type:String}
 });
 
 // const bookModel=mongoose.model('bookShop',bookSchema);
