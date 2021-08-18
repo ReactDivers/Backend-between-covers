@@ -6,8 +6,8 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-const { getBook, fiction, nonFiction, kids, classic, getQuote, creatReview } = require('./controllers/BookController');
-const { createBook, getUser } = require('./controllers/UserController');
+const { getBook, fiction, nonFiction, kids, classic, getQuote } = require('./controllers/BookController');
+const { createBook, getUser, creatReview } = require('./controllers/UserController');
 const { seedBookCollection } = require('./models/UserModel');
 // seedBookCollection();
 app.get('/',

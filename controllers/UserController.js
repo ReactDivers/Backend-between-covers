@@ -31,5 +31,28 @@ const createBook = (req, res) => {
     });
 }
 
+const creatReview = async (req, res) => {
 
-module.exports = { createBook, getUser };
+    // res.send('we are writing a review here .... ✍️')
+    console.log("=======");
+    console.log(req.body);
+    const {
+        email,
+        description,
+        title,
+
+    } = req.body;
+
+    // create the new book reveiew
+    const newBookObj = new bookModel({
+        email: email,
+        description,
+        title,
+    });
+    newBookObj.save();
+
+    res.json(newBookObj);
+}
+
+
+module.exports = { createBook, getUser, creatReview };

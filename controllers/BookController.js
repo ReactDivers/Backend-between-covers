@@ -105,27 +105,27 @@ const getQuote = async (req, res) => {
 
 }
 
-const creatReview = async (req, res) => {
+// const creatReview = async (req, res) => {
 
-    // res.send('we are writing a review here .... ✍️')
-    console.log("=======");
-    console.log(req.body);
-    const {
-        email,
-        description,
-        title,
+//     // res.send('we are writing a review here .... ✍️')
+//     console.log("=======");
+//     console.log(req.body);
+//     const {
+//         email,
+//         description,
+//         title,
 
-    } = req.body;
+//     } = req.body;
 
-    // create the new book reveiew
-    const newBookObj = new bookModel ({
-        email: email,
-        description,
-        title,
-    });
-    newBookObj.save();
+//     // create the new book reveiew
+//     const newBookObj = new bookModel ({
+//         email: email,
+//         description,
+//         title,
+//     });
+//     newBookObj.save();
 
-    res.json(newBookObj);
-}
+//     res.json(newBookObj);
+// }
 
 module.exports = { getBook, fiction, nonFiction, kids, classic, getQuote ,creatReview }
