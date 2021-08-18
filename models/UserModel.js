@@ -16,7 +16,8 @@ const seedBookCollection=()=>{
                 description:"nice  book",
                 title:"The invisible guest",
                 image:"#",
-                author:"John"
+                author:"John",
+                id:"65655"
 
             }
         ]

@@ -21,7 +21,12 @@ const createBook = (req, res) => {
     // console.log(book);
     bookModel.findOne({ email: email }, (error, userInfo) => {
         console.log(userInfo);
-        if (userInfo === null) {
+        console.log("userInfo");
+        console.log(req.body);
+        if (error) {
+            res.send(error.message)
+        }   else   {
+         if (userInfo === null) {
             // res.send(error);
             const newUser = new bookModel({
                 email: email,
@@ -38,6 +43,7 @@ const createBook = (req, res) => {
             userInfo.save();
             res.json(userInfo);
         }
+    }
 
     });
 }
