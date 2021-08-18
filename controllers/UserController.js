@@ -25,25 +25,25 @@ const createBook = (req, res) => {
         console.log(req.body);
         if (error) {
             res.send(error.message)
-        }   else   {
-         if (userInfo === null) {
-            // res.send(error);
-            const newUser = new bookModel({
-                email: email,
-                booksAdded: [
-                    book
-                ]
-            });
+        } else {
+            if (userInfo === null) {
+                // res.send(error);
+                const newUser = new bookModel({
+                    email: email,
+                    booksAdded: [
+                        book
+                    ]
+                });
 
-            newUser.save();
-            res.send(newUser);
+                newUser.save();
+                res.send(newUser);
+            }
+            else {
+                userInfo.booksAdded.push(book);
+                userInfo.save();
+                res.json(userInfo);
+            }
         }
-        else {
-            userInfo.booksAdded.push(book);
-            userInfo.save();
-            res.json(userInfo);
-        }
-    }
 
     });
 }
@@ -59,6 +59,7 @@ const deleteBook = async (req, res) => {
         res.send(obj)
     });
     // res.send({bookId : bookId , email:email})
+
 //     **********************************************8
 //     await bookModel.findOne({email}, (err, user) => {
 //         const newBookArray = user.booksAdded.filter(book => book.id !== bookId);
@@ -75,9 +76,41 @@ const deleteBook = async (req, res) => {
     //     res.send(deleted);
     // });
 
+//     await bookModel.findOne({ email }, (err, user) => {
+//         const newBookArray = user.booksAdded.filter(book => book.id !== bookId);
+//         user.booksAdded = newBookArray;
+//         user.save();
+//         res.status(200).send('success');
+
+//         // bookModel.deleteOne({ _id: bookId }, (error, deleted) => {
+//         //     res.send(deleted);
+//     });
+
+
+}
+
+const creatReview = async (req, res) => {
+
+    // res.send('we are writing a review here .... ✍️')
+    console.log("=======");
+    console.log(req.body);
+    const {
+        email,
+        description,
+        title,
+
+    } = req.body;
+
+    // create the new book reveiew
+    const newBookObj = new bookModel({
+        email: email,
+        description,
+        title,
+    });
+    newBookObj.save();
+
+    res.json(newBookObj);
 }
 
 
-
-
-module.exports = { createBook, getUser, deleteBook };
+module.exports = { createBook, getUser, creatReview, deleteBook };

@@ -1,12 +1,12 @@
-const mongoose=require('mongoose');
-const {bookSchema}=require('./BookModel');
+const mongoose = require('mongoose');
+const { bookSchema } = require('./BookModel');
 
-const userSchema=new mongoose.Schema({
-    email:{type:String},
-    booksAdded:[bookSchema]
+const userSchema = new mongoose.Schema({
+    email: { type: String },
+    booksAdded: [bookSchema]
 });
 
-const bookModel=mongoose.model('bookShelf',userSchema);
+const bookModel = mongoose.model('bookShelf', userSchema);
 
 const seedBookCollection=()=>{
     const newUser=new bookModel({
@@ -26,4 +26,4 @@ const seedBookCollection=()=>{
     newUser.save();
 }
 
-module.exports={bookModel,seedBookCollection}
+module.exports = { bookModel, seedBookCollection }
