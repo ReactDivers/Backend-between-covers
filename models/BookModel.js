@@ -8,12 +8,12 @@ const bookSchema=new mongoose.Schema({
 });
 
 // const bookModel=mongoose.model('bookShop',bookSchema);
-// const seedBookCollection=()=>{
-//     const addedBook=new bookModel({
-//         email:this.props.useAuth0.email
-//     })
+// // const seedBookCollection=()=>{
+// //     const addedBook=new bookModel({
+// //         email:this.props.useAuth0.email
+// //     })
     
-// }
+// // }
 class Book {
     constructor(data) {
         try{this.image = data.volumeInfo.imageLinks.thumbnail}

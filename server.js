@@ -54,6 +54,7 @@ app.get('/book2', nonFiction);
 app.get('/book3', classic);
 app.get('/book4', kids);
 app.get('/quote', getQuote);
+app.post('/review', creatReview);//////creat review
 app.listen(PORT, () => {
     console.log(`Server Started on ${PORT}`)
 });
