@@ -54,17 +54,38 @@ const deleteBook = async (req, res) => {
     // get the params values from the request
     const bookId = req.params.book_id;
     const email = req.query.email;
-
-    // res.send({bookId : bookId , email:email})
-    await bookModel.findOne({ email }, (err, user) => {
-        const newBookArray = user.booksAdded.filter(book => book.id !== bookId);
-        user.booksAdded = newBookArray;
-        user.save();
-        res.status(200).send('success');
-
-        // bookModel.deleteOne({ _id: bookId }, (error, deleted) => {
-        //     res.send(deleted);
+    bookModel.update({ email: email }, { $pull: { booksAdded:{_id:bookId}  }}, { safe: true, multi:true }, function(err, obj) {
+        //do something smart
+        res.send(obj)
     });
+    // res.send({bookId : bookId , email:email})
+
+//     **********************************************8
+//     await bookModel.findOne({email}, (err, user) => {
+//         const newBookArray = user.booksAdded.filter(book => book.id !== bookId);
+//         user.booksAdded = newBookArray;
+//         user.save();
+//         if(err){
+//             res.status(500).send(err.message)
+//         }else{
+
+//             res.status(200).send('success');
+//         }
+// ************************************************
+    // bookModel.deleteOne({ _id: bookId }, (error, deleted) => {
+    //     res.send(deleted);
+    // });
+
+//     await bookModel.findOne({ email }, (err, user) => {
+//         const newBookArray = user.booksAdded.filter(book => book.id !== bookId);
+//         user.booksAdded = newBookArray;
+//         user.save();
+//         res.status(200).send('success');
+
+//         // bookModel.deleteOne({ _id: bookId }, (error, deleted) => {
+//         //     res.send(deleted);
+//     });
+
 
 }
 
