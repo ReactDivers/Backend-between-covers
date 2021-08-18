@@ -17,18 +17,55 @@ const getUser = (req, res) => {
 const createBook = (req, res) => {
     const email = req.body.email;
     const book = req.body.book;
-    console.log(req.body);
+    console.log(email);
+    // console.log(book);
     bookModel.findOne({ email: email }, (error, userInfo) => {
-        if (userInfo === null) {
-            res.send(error);
-        }
-        else {
-            userInfo.booksAdded.push(book);
-            userInfo.save();
-            res.send(userInfo);
+        console.log(userInfo);
+        console.log("userInfo");
+        console.log(req.body);
+        if (error) {
+            res.send(error.message)
+        } else {
+            if (userInfo === null) {
+                // res.send(error);
+                const newUser = new bookModel({
+                    email: email,
+                    booksAdded: [
+                        book
+                    ]
+                });
+
+                newUser.save();
+                res.send(newUser);
+            }
+            else {
+                userInfo.booksAdded.push(book);
+                userInfo.save();
+                res.json(userInfo);
+            }
         }
 
     });
+}
+
+const deleteBook = async (req, res) => {
+    // res.send(`HELLO:${req.params.book_id}`);
+
+    // get the params values from the request
+    const bookId = req.params.book_id;
+    const email = req.query.email;
+
+    // res.send({bookId : bookId , email:email})
+    await bookModel.findOne({ email }, (err, user) => {
+        const newBookArray = user.booksAdded.filter(book => book.id !== bookId);
+        user.booksAdded = newBookArray;
+        user.save();
+        res.status(200).send('success');
+
+        // bookModel.deleteOne({ _id: bookId }, (error, deleted) => {
+        //     res.send(deleted);
+    });
+
 }
 
 const creatReview = async (req, res) => {
@@ -55,4 +92,4 @@ const creatReview = async (req, res) => {
 }
 
 
-module.exports = { createBook, getUser, creatReview };
+module.exports = { createBook, getUser, creatReview, deleteBook };
