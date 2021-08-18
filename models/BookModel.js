@@ -22,6 +22,7 @@ class Book {
         this.description = data.volumeInfo.description;
         this.title = data.volumeInfo.title;
         this.author=data.volumeInfo.authors;
+        this.id=data.id
     }
 }
 

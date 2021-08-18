@@ -8,10 +8,19 @@ const userSchema=new mongoose.Schema({
 
 const bookModel=mongoose.model('bookShelf',userSchema);
 
-const seedBookCollection=(email)=>{
+const seedBookCollection=()=>{
     const newUser=new bookModel({
-        email:email,
-        booksAdded:[]
+        email:"rawanazazi12@gmail.com",
+        booksAdded:[
+            {
+                description:"nice  book",
+                title:"The invisible guest",
+                image:"#",
+                author:"John",
+                id:"65655"
+
+            }
+        ]
     });
 
     newUser.save();
