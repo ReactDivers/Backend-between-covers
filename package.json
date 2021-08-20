@@ -1,0 +1,32 @@
+{
+  "name": "backend-between-covers",
+  "version": "1.0.0",
+  "description": "Authers:",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReactDivers/Backend-between-covers.git"
+  },
+  "author": "Rawan Alazazi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ReactDivers/Backend-between-covers/issues"
+  },
+  "homepage": "https://github.com/ReactDivers/Backend-between-covers#readme",
+  "dependencies": {
+    "@auth0/auth0-react": "^1.6.0",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^2.0.4",
+    "mongoose": "^5.13.7"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
